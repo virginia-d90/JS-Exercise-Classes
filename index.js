@@ -61,7 +61,7 @@ Person.prototype.toString = function(){
 }
 */
 /*class Person {
-  
+
   constructor(attributes){
     this.name = attributes.name;
     this.age = attributes.age;
@@ -78,10 +78,10 @@ Person.prototype.toString = function(){
   toString(){
     return `${this.name}, ${this.age}`
   }
-}
+}*/
 
-personOne = new Person('Virginia', 29);
-*/
+//personOne = new Person('Virginia', 29);
+
 class Person {
   constructor(name, age){
     this.name = name;
@@ -128,12 +128,20 @@ class Car {
     this.tank = this.tank + gallons;
     return this.tank;
   }
+ 
   drive(distance){
-    this.odometer = this.odometer + distance;
-    return this.odometer;
+    let drivableMiles = this.tank * this.milesPerGallon;
+    if(drivableMiles < distance){
+      this.odometer = this.odometer + drivableMiles;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles`
+    } else {
+      this.odometer = this.odometer + distance;
+      this.tank = this.tank - distance / this.milesPerGallon;
+    }
   }
-  
 }
+
 
 /*
   TASK 3
@@ -147,6 +155,7 @@ class Car {
         + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
         + {name} and {location} of course come from the instance's own properties.
 */
+
 class Lambdasian {
   /** //WHAT IS THE DEAL WITH BELOW
    * @param {{ name: any; age: any; location: any; }} object
