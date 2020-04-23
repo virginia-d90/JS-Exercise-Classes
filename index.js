@@ -61,6 +61,7 @@ Person.prototype.toString = function(){
 }
 */
 /*class Person {
+  
   constructor(attributes){
     this.name = attributes.name;
     this.age = attributes.age;
@@ -117,7 +118,21 @@ personOne = new Person('Virginia', 29);
 */
 
 class Car {
-
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons){
+    this.tank = this.tank + gallons;
+    return this.tank;
+  }
+  drive(distance){
+    this.odometer = this.odometer + distance;
+    return this.odometer;
+  }
+  
 }
 
 /*
@@ -133,7 +148,17 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  /** //WHAT IS THE DEAL WITH BELOW
+   * @param {{ name: any; age: any; location: any; }} object
+   */
+  constructor(object){
+    this.name = object.name;
+    this.age = object.age;
+    this.location = object.location;
+  }
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`
+  }
 }
 
 /*
